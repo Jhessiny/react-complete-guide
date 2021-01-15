@@ -1,25 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+import "./App.css";
+// import Person from "./Person/Person";
+import UserInput from "./UserInput/UserInput";
+import UserOutput from "./UserOutput/UserOutput";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    name: "Xena",
+  };
+
+  changeNameHandler = () => {
+    this.setState({ name: "Carla" });
+    console.log("HEy");
+  };
+
+  inputNameHandler = (event) => {
+    this.setState({ name: event.target.value });
+  };
+
+  render() {
+    // const style = {
+    //   backgroundColor: "white",
+    //   font: "inherit",
+    //   border: "1px solid blue",
+    //   padding: "8px",
+    //   cursor: "pointer",
+    // };
+
+    return (
+      <div className="App">
+        {/* <h1>Hey</h1>
+        <button style={style} onClick={() => this.changeNameHandler("Manuel")}>
+          Click me
+        </button>
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+          hobbies="programm"
+        />
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+          hobbies="play games"
+          click={this.changeNameHandler.bind(this, "André")}
+          changed={this.inputNameHandler}
+        />
+        <Person
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age}
+        /> */}
+        <UserInput change={this.inputNameHandler} name={this.state.name} />
+        <button onClick={() => this.changeNameHandler("Carla")}>Click</button>
+        <UserOutput name={this.state.name} />
+        <UserOutput name={this.state.name} />
+        <UserOutput name={this.state.name} />
+      </div>
+    );
+  }
 }
 
 export default App;
