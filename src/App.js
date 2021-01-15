@@ -1,6 +1,8 @@
 import { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
+import Validation from "./Validation";
+import CharComponent from "./CharComponent";
 
 class App extends Component {
   state = {
@@ -11,6 +13,7 @@ class App extends Component {
       { id: 4, name: "Marvin", age: 0 },
     ],
     showPersons: false,
+    input: "",
   };
 
   inputNameHandler = (event, id) => {
@@ -39,7 +42,31 @@ class App extends Component {
     const doesShow = this.state.showPersons;
     this.setState({ showPersons: !doesShow });
   };
+
+  countChar = (e) => {
+    let value = e.target.value;
+    this.setState({
+      input: value,
+    });
+  };
+
+  deleteChar = (charId) => {
+    const chars = [...this.state.input.split("")];
+    chars.splice(charId, 1);
+    const input = chars.join("");
+    this.setState({ input: input });
+  };
   render() {
+    const charList = this.state.input.split("").map((ch, index) => {
+      return (
+        <CharComponent
+          character={ch}
+          key={index}
+          delete={() => this.deleteChar(index)}
+        />
+      );
+    });
+
     const style = {
       backgroundColor: "white",
       font: "inherit",
@@ -74,6 +101,10 @@ class App extends Component {
           Click me
         </button>
         {persons}
+        <input onChange={this.countChar} value={this.state.input} />
+        <p> value length: {this.state.input.length}</p>
+        <Validation length={this.state.input.length} />
+        {charList}
       </div>
     );
   }
