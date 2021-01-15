@@ -1,6 +1,6 @@
 const UserOutput = (props) => {
   return (
-    <div>
+    <div className="Output" className="Output" className="Output">
       <p>Hey {props.name} </p>
       <p>How</p>
     </div>

@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+button {
+  display: inline-block;
+  padding: 6px;
+  background-color: #282c34;
+  color: #eeeeee;
+  border: none;
+}
+
+.Input {
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.Output {
+  padding: 15px;
+  border: 1px solid #8d8d8d;
+  width: 200px;
+  margin: 10px auto;
+  border-radius: 3px;
+}
