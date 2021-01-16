@@ -1,20 +1,25 @@
 import "./Person.css";
-import Radium from "radium";
+import styled from "styled-components";
+
+const StyledDiv = styled.div`
+  max-width: 300px;
+  margin: 16px auto;
+  border: 1px solid #eeeeee;
+  box-shadow: 0 2px 3px #cccccc;
+  padding: 16px;
+  text-align: center;
+`;
 
 const Person = (props) => {
-  const style = {
-    "@media(min-width: 500px)": {
-      width: "450px",
-    },
-  };
   return (
-    <div className="Person" style={style}>
+    // <div className="Person" style={style}>
+    <StyledDiv>
       <h2 onClick={props.click}>
         I'm {props.name}, I'm {props.age} years old.
       </h2>
       <input type="text" onChange={props.changed} value={props.name} />
-    </div>
+    </StyledDiv>
   );
 };
 
-export default Radium(Person);
+export default Person;
